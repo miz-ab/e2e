@@ -1,0 +1,26 @@
+commons:
+  serviceUnderTest:
+    name: crm
+
+server:
+  uri: http://localhost:4200
+  run-headless: false
+  slow-mo: 1000
+  viewport-width: 1600
+  viewport-height: 1200
+
+crm-be:
+  host: http://localhost:8080
+
+---
+spring:
+  config.activate.on-profile: itest
+
+server:
+  uri: http://crm-test-web:80
+  run-headless: true
+  servlet:
+    context-path: /crm
+
+crm:
+  host: http://crm-test-web:80

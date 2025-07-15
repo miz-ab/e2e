@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BrowserManager implements AutoCloseable{
 
-    private String baseUrl;
+    private String baseUrl = "http://localhost:4200/";
 
     @Getter
     private Page page;

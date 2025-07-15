@@ -11,8 +11,8 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @SelectPackages("com.erm_e2e.crm_e2e")
 
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/report.html, json:target/cucumber.json")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "nl.cjib.ombp.verzet")
-@ConfigurationParameter(key = FEATURES_PROPERTY_NAME, value = "classpath:nl/cjib/ombp/verzet/features/")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.erm_e2e.crm_e2e")
+@ConfigurationParameter(key = FEATURES_PROPERTY_NAME, value = "classpath:crm/e2e/features/")
 @ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "not @ignore")
 public class RunCucumberTest {
 }

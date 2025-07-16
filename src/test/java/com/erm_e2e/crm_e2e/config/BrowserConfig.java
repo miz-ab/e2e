@@ -3,32 +3,22 @@ package com.erm_e2e.crm_e2e.config;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import static com.erm_e2e.crm_e2e.config.InitData.*;
 
 @Configuration
 public class BrowserConfig {
 
-    private boolean runHeadless = false;
-
-    @Value("${server.slow-mo:0}")
-    private int slowMo;
-
-    @Value("${server.viewport-width:1024}")
-    private int width;
-
-    @Value("${server.viewport-height:768}")
-    private int height;
-
     @Bean
     public BrowserType.LaunchOptions launchOptions() {
-        return new BrowserType.LaunchOptions().setHeadless(runHeadless).setSlowMo(slowMo);
+        return new BrowserType.LaunchOptions().setHeadless(HEADLESS_MODE).setSlowMo(SLOW_MO);
     }
 
     @Bean
     public Browser.NewContextOptions browserContext() {
         return new Browser.NewContextOptions()
-                .setViewportSize(width, height);
+                .setViewportSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
     }
 }

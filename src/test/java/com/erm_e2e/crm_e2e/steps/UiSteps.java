@@ -1,6 +1,7 @@
 package com.erm_e2e.crm_e2e.steps;
 
 import com.erm_e2e.crm_e2e.BrowserManager;
+import com.erm_e2e.crm_e2e.pages.CompanyPage;
 import com.erm_e2e.crm_e2e.pages.HomePage;
 import com.erm_e2e.crm_e2e.pages.LoginPage;
 import com.microsoft.playwright.Locator;
@@ -39,5 +40,15 @@ public class UiSteps {
         HomePage homePage = new HomePage(page);
         homePage.isPageVisible();
     }
+
+    @Given("i am in the company page")
+    public void iAmInTheCompanyPage(){
+        iEnterCorrectUsernameAndPassword("crm_admin", "12345");
+        CompanyPage companyPage = new CompanyPage(page);
+        companyPage.redirectToCompanyPage();
+        companyPage.isPageVisible();
+
+    }
+
 
 }

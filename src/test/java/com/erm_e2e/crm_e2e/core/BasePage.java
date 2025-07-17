@@ -16,9 +16,14 @@ public abstract class BasePage implements CrmPage {
     public Locator getLinkButton(String label) {
         return page.locator("a, button, input, span").filter(new Locator.FilterOptions().setHasText(label));
     }
+
+    public Locator getHeadingText(String text){
+        return  page.getByRole(AriaRole.HEADING,new Page.GetByRoleOptions().setName(text));
+    }
     public void fillInputByLabel(String labelText, String value) {
         page.getByLabel(labelText).fill(value);
     }
+
 
     public Locator getButton(String text) {
         return  page.locator(String.format("button:has-text('%s'), a:has-text('%s')", text, text))
@@ -28,12 +33,6 @@ public abstract class BasePage implements CrmPage {
     @Override
     public void isPageVisible() {
         // gets overridden in the actual Page
-    }
-
-    public Locator logoutButton() {
-        Locator locator = page.locator("a").filter(new Locator.FilterOptions()
-                .setHasText("Uitloggen"));
-        return locator;
     }
 
     @Override

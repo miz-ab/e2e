@@ -5,11 +5,11 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import static com.erm_e2e.crm_e2e.config.InitData.BASE_URL;
+
 @Slf4j
 @Component
 public class BrowserManager implements AutoCloseable{
-
-    private String baseUrl = "http://localhost:4200/";
 
     @Getter
     private Page page;
@@ -50,7 +50,7 @@ public class BrowserManager implements AutoCloseable{
     }
 
     public void openLandingspagina() {
-        page.navigate(baseUrl);
+        page.navigate(BASE_URL);
     }
 
 }

@@ -18,7 +18,7 @@ import static io.cucumber.java.Status.SKIPPED;
 
 @Slf4j
 public class WebHooks {
-    private final List<Status> gefaaldStatussen = List.of(FAILED, SKIPPED);
+    private final List<Status> failedStatus = List.of(FAILED, SKIPPED);
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.HH.mm.ss.SSSS");
 
     @Autowired
@@ -26,6 +26,7 @@ public class WebHooks {
 
     @Before
     public void beforeScenario() {
+        log.info("Starting a new scenario, creating a new browser page and opening the landing page.");
         browserManager.createNewPage();
         browserManager.openLandingspagina();
     }
@@ -33,7 +34,7 @@ public class WebHooks {
     @After
     public void afterScenario(Scenario scenario) {
         try {
-            if (gefaaldStatussen.contains(scenario.getStatus())) {
+            if (failedStatus.contains(scenario.getStatus())) {
                 byte[] screenshot = browserManager.getPage().screenshot();
                 String filename = String.format("%s.png", LocalDateTime.now().format(formatter));
                 scenario.attach(screenshot, "image/png", filename);

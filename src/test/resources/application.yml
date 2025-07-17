@@ -1,3 +1,10 @@
+spring:
+  application:
+    name: mailify
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=crm_db
+    username: postgres
+    password: root
 commons:
   serviceUnderTest:
     name: crm

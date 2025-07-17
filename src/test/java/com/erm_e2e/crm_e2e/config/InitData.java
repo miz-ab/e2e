@@ -8,6 +8,7 @@ public interface InitData {
 
     String BASE_URL = "http://localhost:4200";
     String COMPANY_URL = BASE_URL + "/company";
+    String ACQUISITION_URL = BASE_URL + "/acq";
     String TEMP_USERNAME = "crm_admin";
     String TEMP_PASSWORD = "12345";
 }

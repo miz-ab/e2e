@@ -1,6 +1,7 @@
 package com.erm_e2e.crm_e2e.steps;
 
 import com.erm_e2e.crm_e2e.BrowserManager;
+import com.erm_e2e.crm_e2e.pages.AcquisitionPage;
 import com.erm_e2e.crm_e2e.pages.CompanyPage;
 import com.erm_e2e.crm_e2e.pages.HomePage;
 import com.erm_e2e.crm_e2e.pages.LoginPage;
@@ -22,6 +23,9 @@ public class UiSteps {
         page = browserManager.getPage();
     }
 
+    /*
+    * Login Section
+    * */
     @Given("i am on login page")
     public void iAmOnLoginPage() {
         LoginPage loginPage = new LoginPage(page);
@@ -42,6 +46,10 @@ public class UiSteps {
         homePage.isPageVisible();
     }
 
+    /*
+    * Company Section
+    * */
+
     @Given("i am in the company page")
     public void iAmInTheCompanyPage(){
         iAmOnLoginPage();
@@ -55,7 +63,7 @@ public class UiSteps {
     }
 
     @When("i enter {string} and {string} and press create company button")
-    public void enterCompanyNameAndemail(String companyName, String email) {
+    public void enterCompanyNameAndEmail(String companyName, String email) {
         CompanyForm companyForm = new CompanyForm(page);
         companyForm.fillFormField("name",companyName, "input");
         companyForm.fillFormField("email",email, "input");
@@ -72,5 +80,24 @@ public class UiSteps {
         companyPage.verifyCompanyInTable(companyName);
     }
 
+    /*
+    * Acquisition section
+    * */
 
+    @Given("i am in the acquisition page")
+    public void iAmInTheAcquisitionPage(){
+        iAmOnLoginPage();
+        iEnterCorrectUsernameAndPassword(TEMP_USERNAME, TEMP_PASSWORD);
+        AcquisitionPage acquisitionPage = new AcquisitionPage(page);
+        acquisitionPage.redirectToAcquisitionPage();
+        acquisitionPage.isPageVisible();
+        Locator btn = acquisitionPage.getButton("New Prospect");
+        btn.click();
+    }
+
+    @When("i select {string} and enter {string} and pres create new prospect button")
+    public void iSelectCompanyAndEnterProspectName(String label, String optionText) {
+        AcquisitionPage acquisitionPage = new AcquisitionPage(page);
+        acquisitionPage.selectFirstOption();
+    }
 }

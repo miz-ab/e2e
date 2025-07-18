@@ -6,6 +6,7 @@ import com.erm_e2e.crm_e2e.pages.CompanyPage;
 import com.erm_e2e.crm_e2e.pages.HomePage;
 import com.erm_e2e.crm_e2e.pages.LoginPage;
 import com.erm_e2e.crm_e2e.pages.dialog.CompanyForm;
+import com.erm_e2e.crm_e2e.pages.dialog.ProspectForm;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.en.Given;
@@ -100,4 +101,11 @@ public class UiSteps {
         AcquisitionPage acquisitionPage = new AcquisitionPage(page);
         acquisitionPage.selectFirstOption();
     }
+
+    @Then("i am able to see newly added prospect")
+    public void iAmAbleToSeeNewlyAddedProspect(){
+        ProspectForm prospectForm = new ProspectForm(page);
+        prospectForm.isPageVisible();
+    }
+
 }
